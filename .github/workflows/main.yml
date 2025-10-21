@@ -1,0 +1,34 @@
+#name of the workflow is ETL
+name: ETL Workflow
+
+#trigger 
+on:
+    push:
+        branches:
+            - main
+
+Jobs:
+    extract-data-job:
+        runs on : ubuntu-Latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: run extract.py
+              run: python extract.py
+    transform-data-job:
+        runs on : ubuntu-Latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: run transform.py
+              run: python transform.py
+    load-data-job:
+        runs on : ubuntu-Latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: run load.py
+              run: python load.py
